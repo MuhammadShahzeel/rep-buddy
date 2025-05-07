@@ -11,18 +11,13 @@ const Navbar = () => {
           </h1>
         </Link>
         <div className="flex items-center space-x-4">
-          <Link
-            to="/"
+          <button
+           
             className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg shadow-lg hover:shadow-emerald-400/20 transition-all font-medium"
           >
-            Workouts
-          </Link>
-          <Link
-            to="/profile"
-            className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg transition-colors font-medium"
-          >
-            Profile
-          </Link>
+            Login
+          </button>
+     
         </div>
       </nav>
     </header>
