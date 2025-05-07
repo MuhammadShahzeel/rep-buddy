@@ -31,11 +31,11 @@ function WorkoutForm({ setWorkouts }) {
       onSubmit={handleSubmit}
       className="bg-gray-900/80 backdrop-blur-lg border border-gray-800 rounded-2xl p-6 shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300"
     >
-      <h3 className="text-2xl font-extrabold mb-6 pb-2 border-b border-gray-800">
-        <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+      <h3 className="text-2xl font-extrabold mb-6 pb-2  border-gray-800">
+        <span className="text-white">
           Add New Workout
         </span>
-        <span className="block w-12 h-0.5 bg-gradient-to-r from-emerald-400/80 to-cyan-400/80 mt-2 rounded-full" />
+        
       </h3>
 
       <div className="space-y-6">

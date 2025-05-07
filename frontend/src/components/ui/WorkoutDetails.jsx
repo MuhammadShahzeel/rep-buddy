@@ -55,6 +55,7 @@ const WorkoutDetails = ({ workout }) => {
           {new Date(workout.createdAt).toLocaleString(undefined, {
             dateStyle: 'medium',
             timeStyle: 'short',
+            hour12: true,
           })}
         </span>
       </div>
