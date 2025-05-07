@@ -22,20 +22,26 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="min-h-screen max-w-7xl mx-auto px-6 py-12 font-poppins">
-      <h2 className="text-4xl font-bold text-emerald-400 mb-10 tracking-tight">Your Workouts</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div className="md:col-span-2 flex flex-col gap-6">
-          {workouts && workouts.map((workout) => (
-            <WorkoutDetails key={workout._id} workout={workout} />
-          ))}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  min-h-screen">
+      <h2 className="text-3xl font-bold text-emerald-400 mb-4">Your Workouts</h2>
+      <div className="grid md:grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8">
+        {/* Workouts Column */}
+        <div className="space-y-6">
+          {workouts && workouts.length > 0 ? (
+            workouts.map((workout) => (
+              <WorkoutDetails key={workout._id} workout={workout} />
+            ))
+          ) : (
+            <p className="text-gray-400 text-center py-8">No workouts found. Add your first workout!</p>
+          )}
         </div>
-        <div className="md:sticky md:top-10">
+  
+        {/* Form Column */}
+        <div className="lg:sticky lg:top-24 self-start">
           <WorkoutForm setWorkouts={setWorkouts} />
         </div>
       </div>
     </div>
-  );
-};
+  );}
 
 export default Home;
