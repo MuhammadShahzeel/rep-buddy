@@ -30,74 +30,68 @@ function WorkoutForm() {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="bg-gray-900/80 backdrop-blur-lg border border-gray-800 rounded-2xl p-6 shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300"
+   <form
+  onSubmit={handleSubmit}
+  className="bg-gray-900/80 backdrop-blur-lg border border-gray-800 rounded-2xl p-6 shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300"
+>
+  <h3 className="text-2xl font-extrabold mb-6 pb-2 text-white">
+    Add New Workout
+  </h3>
+
+  <div className="space-y-6">
+    {/* Title Input */}
+    <div className="space-y-2">
+      <input
+        id="title"
+        type="text"
+        name="title"
+        value={workoutData.title}
+        onChange={handleChange}
+        placeholder="Workout Title"
+        className="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/20 focus:border-emerald-400 transition-all"
+      />
+    </div>
+
+    {/* Load and Reps */}
+    <div className="grid grid-cols-2 gap-4">
+      <input
+        id="load"
+        type="number"
+        name="load"
+        value={workoutData.load}
+        onChange={handleChange}
+        placeholder="Load (kg)"
+        className="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/20 focus:border-emerald-400 transition-all"
+      />
+
+      <input
+        id="reps"
+        type="number"
+        name="reps"
+        value={workoutData.reps}
+        onChange={handleChange}
+        placeholder="Reps"
+        className="w-full px-4 py-3 rounded-xl bg-gray-800/50 border border-gray-700/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/20 focus:border-emerald-400 transition-all"
+      />
+    </div>
+
+    {/* Submit Button */}
+    <button
+      type="submit"
+      className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 rounded-xl shadow-lg hover:shadow-emerald-400/20 transition-all"
     >
-      <h3 className="text-2xl font-extrabold mb-6 pb-2  border-gray-800">
-        <span className="text-white">
-          Add New Workout
-        </span>
-        
-      </h3>
+      Add Workout
+    </button>
 
-      <div className="space-y-6">
-        {/* Title Input */}
-        <div className="space-y-2">
-          <input
-            id="title"
-            type="text"
-            name="title"
-            value={workoutData.title}
-            onChange={handleChange}
-            placeholder="Workout Title"
-            className="w-full px-4 py-3 rounded-lg bg-gray-900/60 border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
-          />
-        </div>
-
-        {/* Load and Reps */}
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-2">
-            <input
-              id="load"
-              type="number"
-              name="load"
-              value={workoutData.load}
-              onChange={handleChange}
-              placeholder="Load (kg)"
-              className="w-full px-4 py-3 rounded-lg bg-gray-900/60 border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-500 transition-all"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <input
-              id="reps"
-              type="number"
-              name="reps"
-              value={workoutData.reps}
-              onChange={handleChange}
-              placeholder="Reps"
-              className="w-full px-4 py-3 rounded-lg bg-gray-900/60 border border-gray-800 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 transition-all"
-            />
-          </div>
-        </div>
-
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 rounded-lg shadow-lg hover:shadow-emerald-400/20 transition-all"
-        >
-          Add Workout
-        </button>
-
-        {/* Error Message */}
-        {error && (
-          <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-2 rounded-lg">
-            {error}
-          </div>
-        )}
+    {/* Error Message */}
+    {error && (
+      <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-2 rounded-lg">
+        {error}
       </div>
-    </form>
+    )}
+  </div>
+</form>
+
   );
 }
 
