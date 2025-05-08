@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { addWorkout } from '../../api/workoutApi';
+import { useWorkoutsContext } from '../../hooks/useWorkoutsContext';
 
-function WorkoutForm({ setWorkouts }) {
+function WorkoutForm() {
   const [workoutData, setWorkoutData] = useState({ title: '', load: '', reps: '' });
   const [error, setError] = useState(null);
+  const {dispatch} = useWorkoutsContext();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,7 +19,8 @@ function WorkoutForm({ setWorkouts }) {
       if (response.status !== 200) {
         setError(response.data.error);
       } else {
-        setWorkouts((prev) => [...prev, response.data]);
+        dispatch({ type: 'ADD_WORKOUT', payload: response.data });
+      
         setError(null);
         setWorkoutData({ title: '', load: '', reps: '' });
       }

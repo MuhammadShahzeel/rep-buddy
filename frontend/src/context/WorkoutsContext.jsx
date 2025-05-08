@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const WorkoutsContext = createContext();
 
 const workoutsReducer = (state, action) => {
@@ -7,7 +8,7 @@ const workoutsReducer = (state, action) => {
     case "SET_WORKOUTS":
       return {workouts: action.payload} ;
     case "ADD_WORKOUT":
-      return {  workouts: [...state.workouts, action.payload] };
+      return {  workouts: [ action.payload,...state.workouts] };
     case "DELETE_WORKOUT":
       return {
         

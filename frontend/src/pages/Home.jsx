@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect} from 'react';
 import { getWorkouts } from '../api/workoutApi';
 import WorkoutDetails from '../components/ui/WorkoutDetails';
@@ -30,6 +31,7 @@ const Home = () => {
     };
 
     fetchWorkouts();
+
   }, []);
 
   return (

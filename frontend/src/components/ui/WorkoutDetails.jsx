@@ -1,18 +1,48 @@
 import React from 'react';
-import { Dumbbell, Repeat, Calendar } from 'lucide-react';
+import { Dumbbell, Repeat, Calendar, Trash2 } from 'lucide-react';
+import { useWorkoutsContext } from '../../hooks/useWorkoutsContext';
+import { deleteWorkout } from '../../api/workoutApi';
 
 const WorkoutDetails = ({ workout }) => {
+  const {dispatch} = useWorkoutsContext();
+  const handleDelete = async(id) => {
+    try {
+      const response = await deleteWorkout(id);
+      if (response.status === 200) {
+      
+     
+        dispatch({ type: 'DELETE_WORKOUT', payload: id });
+      
+        
+      }
+    } catch (error) {
+      console.error("Error deleting workout:", error);
+    }
+  };
+  
+
   return (
     <div className="relative bg-gray-900/80 backdrop-blur-lg border border-gray-800 rounded-2xl p-6 shadow-2xl hover:shadow-emerald-500/10 transition-all duration-300 group hover:-translate-y-1.5">
       {/* Background Glow Effect */}
       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      
-      {/* Title Section */}
-      <div className="mb-6">
-        <h4 className="text-2xl font-extrabold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">
-          {workout.title}
-        </h4>
-        <div className="mt-2 h-1 w-12 bg-gradient-to-r from-emerald-400/80 to-cyan-400/80 rounded-full" />
+
+      {/* Title & Delete Button Section */}
+      <div className="mb-6 flex justify-between items-start">
+        <div>
+          <h4 className="text-2xl font-extrabold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">
+            {workout.title}
+          </h4>
+          <div className="mt-2 h-1 w-12 bg-gradient-to-r from-emerald-400/80 to-cyan-400/80 rounded-full" />
+        </div>
+        <button
+  onClick={()=>handleDelete(workout._id)}
+  className="relative z-10 p-2 rounded-xl border border-red-500/20 bg-red-500/5 hover:bg-red-500/10 hover:border-red-500/40 transition-all duration-200 hover:scale-105 shadow-md hover:shadow-red-500/10"
+
+  title="Delete Workout"
+>
+  <Trash2 className="text-red-500" size={20} strokeWidth={2.2} />
+</button>
+
       </div>
 
       {/* Stats Grid */}
