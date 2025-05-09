@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+
 import React, { useEffect,useState} from 'react';
 import { getWorkouts } from '../api/workoutApi';
 import WorkoutDetails from '../components/ui/WorkoutDetails';
@@ -48,7 +48,7 @@ const closeModal = () => {
 
     fetchWorkouts();
 
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  min-h-screen">
