@@ -25,7 +25,9 @@ function WorkoutForm() {
         setWorkoutData({ title: '', load: '', reps: '' });
       }
     } catch (error) {
+      
       console.error("Error adding workout:", error);
+      setError("Please fill in all fields.");
     }
   };
 
