@@ -3,8 +3,11 @@ import { Dumbbell, Repeat, Calendar, Trash2, Pencil } from 'lucide-react';
 import { useWorkoutsContext } from '../../hooks/useWorkoutsContext';
 import { deleteWorkout } from '../../api/workoutApi';
 
-const WorkoutDetails = ({ workout }) => {
+
+
+const WorkoutDetails = ({ workout ,onEdit }) => {
   const { dispatch } = useWorkoutsContext();
+
 
   const handleDelete = async (id) => {
     try {
@@ -17,8 +20,11 @@ const WorkoutDetails = ({ workout }) => {
     }
   };
 
-  const handleEdit = (id) => {
-    alert("Edit workout");
+  // eslint-disable-next-line no-unused-vars
+  const handleEdit = () => {
+    onEdit(workout);
+    
+   
   };
 
   return (
@@ -35,7 +41,7 @@ const WorkoutDetails = ({ workout }) => {
         {/* Action buttons */}
         <div className="flex gap-2">
           <button
-            onClick={() => handleEdit(workout._id)}
+            onClick={handleEdit}
             className="p-2 rounded-xl border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-500/40 transition-all duration-200 hover:scale-105 shadow-md hover:shadow-emerald-500/10"
             title="Edit Workout"
           >
@@ -48,6 +54,7 @@ const WorkoutDetails = ({ workout }) => {
           >
             <Trash2 className="text-red-500" size={20} strokeWidth={2.2} />
           </button>
+      
         </div>
       </div>
 

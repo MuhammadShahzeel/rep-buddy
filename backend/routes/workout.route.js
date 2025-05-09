@@ -22,6 +22,6 @@ router.get("/:id", getWorkout);
 router.delete("/:id", deleteWorkout);
 
 // PATCH /workouts/:id
-router.patch("/:id", updateWorkout);
+router.put("/:id", updateWorkout);
 
 export default router;

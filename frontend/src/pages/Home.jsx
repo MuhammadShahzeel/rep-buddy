@@ -1,12 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect} from 'react';
+import React, { useEffect,useState} from 'react';
 import { getWorkouts } from '../api/workoutApi';
 import WorkoutDetails from '../components/ui/WorkoutDetails';
 import WorkoutForm from '../components/ui/WorkoutForm';
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
+import UpdateWorkoutModal from '../components/ui/UpdateWorkoutModal';
+
+
+
+
 
 
 const Home = () => {
+  const [showModal, setShowModal] = useState(false);
+const [selectedWorkout, setSelectedWorkout] = useState(null);
+const handleEdit = (workout) => {
+  setSelectedWorkout(workout);
+  setShowModal(true);
+};
+
+const closeModal = () => {
+  setShowModal(false);
+  setSelectedWorkout(null);
+};
   const { workouts, dispatch } = useWorkoutsContext();
  
 
@@ -42,7 +58,7 @@ const Home = () => {
         <div className="space-y-6">
           {workouts && workouts.length > 0 ? (
             workouts.map((workout) => (
-              <WorkoutDetails key={workout._id} workout={workout} />
+              <WorkoutDetails key={workout._id} workout={workout}  onEdit={handleEdit} />
             ))
           ) : (
             <p className="text-gray-400 text-center py-8">No workouts found. Add your first workout!</p>
@@ -54,6 +70,13 @@ const Home = () => {
           <WorkoutForm/>
         </div>
       </div>
+  {selectedWorkout && (
+  <UpdateWorkoutModal
+    isOpen={showModal}
+    onClose={closeModal}
+    workout={selectedWorkout}
+  />)}
+
     </div>
   );}
 
