@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 const getWorkouts = async (req, res) => {
   try {
     const workouts = await WorkoutModel.find({}).sort({ createdAt: -1 });
-    if(!workouts) {
+    if (!workouts) {
       return res.status(404).json({ error: "No workouts found" });
     }
     res.status(200).json(workouts);
@@ -18,22 +18,19 @@ const getWorkouts = async (req, res) => {
 // Create a new workout
 const createWorkout = async (req, res) => {
   const { title, reps, load } = req.body;
-  
+
   try {
-    const workout = new  WorkoutModel({
+    const workout = new WorkoutModel({
       title,
       reps,
       load,
     });
     await workout.save();
     res.status(200).json(workout);
-    
   } catch (error) {
     console.error(error);
     res.status(400).json({ error: error.message });
-    
   }
-  
 };
 
 // Get a single workout by ID
@@ -54,7 +51,6 @@ const getWorkout = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(400).json({ error: error.message });
-    
   }
 };
 
@@ -73,12 +69,12 @@ const deleteWorkout = async (req, res) => {
     res.status(200).json({ message: "Workout deleted successfully" });
   } catch (error) {
     console.error(error);
-  res.status(400).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 };
 
 // Update a workout by ID
-const updateWorkout = async(req, res) => {
+const updateWorkout = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "Workout not found" });
@@ -87,11 +83,10 @@ const updateWorkout = async(req, res) => {
   const updatedData = req.body;
 
   try {
-    const workout = await WorkoutModel.findByIdAndUpdate(
-      id,
-      updatedData,
-      { new: true, runValidators: true }
-    );
+    const workout = await WorkoutModel.findByIdAndUpdate(id, updatedData, {
+      new: true,
+      runValidators: true,
+    });
 
     if (!workout) {
       return res.status(404).json({ error: "Workout not found" });
@@ -102,15 +97,6 @@ const updateWorkout = async(req, res) => {
     console.error(error);
     res.status(400).json({ error: error.message });
   }
-
-  
-
 };
 
-export{
-  getWorkouts,
-  createWorkout,
-  getWorkout,
-  deleteWorkout,
-  updateWorkout
-};
+export { getWorkouts, createWorkout, getWorkout, deleteWorkout, updateWorkout };

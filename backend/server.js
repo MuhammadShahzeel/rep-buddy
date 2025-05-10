@@ -5,17 +5,17 @@ import connectDB from "./config/db.js";
 import workoutRoutes from "./routes/workout.route.js";
 import userRoutes from "./routes/user.route.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
- 
+
 dotenv.config();
-const app = express(); 
- 
-app.use(cors()); 
+const app = express();
+
+app.use(cors());
 app.use(express.json());
 app.use("/api/workouts", workoutRoutes);
 app.use("/api/user", userRoutes);
 
 // Error handling middleware
-app.use(errorHandler); 
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

@@ -1,10 +1,10 @@
 import express from "express";
 import {
-    getWorkouts,
-    createWorkout,
-    getWorkout,
-    deleteWorkout,
-    updateWorkout,
+  getWorkouts,
+  createWorkout,
+  getWorkout,
+  deleteWorkout,
+  updateWorkout,
 } from "../controllers/workout.controller.js";
 
 const router = express.Router();
