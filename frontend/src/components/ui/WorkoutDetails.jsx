@@ -1,19 +1,16 @@
-import React from 'react';
-import { Dumbbell, Repeat, Calendar, Trash2, Pencil } from 'lucide-react';
-import { useWorkoutsContext } from '../../hooks/useWorkoutsContext';
-import { deleteWorkout } from '../../api/workoutApi';
+import React from "react";
+import { Dumbbell, Repeat, Calendar, Trash2, Pencil } from "lucide-react";
+import { useWorkoutsContext } from "../../hooks/useWorkoutsContext";
+import { deleteWorkout } from "../../api/workoutApi";
 
-
-
-const WorkoutDetails = ({ workout ,onEdit }) => {
+const WorkoutDetails = ({ workout, onEdit }) => {
   const { dispatch } = useWorkoutsContext();
-
 
   const handleDelete = async (id) => {
     try {
       const response = await deleteWorkout(id);
       if (response.status === 200) {
-        dispatch({ type: 'DELETE_WORKOUT', payload: id });
+        dispatch({ type: "DELETE_WORKOUT", payload: id });
       }
     } catch (error) {
       console.error("Error deleting workout:", error);
@@ -23,8 +20,6 @@ const WorkoutDetails = ({ workout ,onEdit }) => {
   // eslint-disable-next-line no-unused-vars
   const handleEdit = () => {
     onEdit(workout);
-    
-   
   };
 
   return (
@@ -54,7 +49,6 @@ const WorkoutDetails = ({ workout ,onEdit }) => {
           >
             <Trash2 className="text-red-500" size={20} strokeWidth={2.2} />
           </button>
-      
         </div>
       </div>
 
@@ -62,10 +56,16 @@ const WorkoutDetails = ({ workout ,onEdit }) => {
       <div className="grid grid-cols-2 gap-3 mb-6">
         <div className="flex items-center gap-3 bg-gray-800/50 p-4 rounded-xl border border-gray-700/50">
           <div className="p-2.5 bg-gradient-to-br from-emerald-500/15 to-cyan-500/10 rounded-xl">
-            <Dumbbell className="text-emerald-400" size={22} strokeWidth={2.5} />
+            <Dumbbell
+              className="text-emerald-400"
+              size={22}
+              strokeWidth={2.5}
+            />
           </div>
           <div>
-            <p className="text-xs font-medium text-gray-400/90 uppercase tracking-wider">Load</p>
+            <p className="text-xs font-medium text-gray-400/90 uppercase tracking-wider">
+              Load
+            </p>
             <p className="text-xl font-bold text-white mt-0.5">
               {workout.load}
               <span className="text-sm text-gray-400 ml-1">kg</span>
@@ -78,7 +78,9 @@ const WorkoutDetails = ({ workout ,onEdit }) => {
             <Repeat className="text-cyan-400" size={22} strokeWidth={2.5} />
           </div>
           <div>
-            <p className="text-xs font-medium text-gray-400/90 uppercase tracking-wider">Reps</p>
+            <p className="text-xs font-medium text-gray-400/90 uppercase tracking-wider">
+              Reps
+            </p>
             <p className="text-xl font-bold text-white mt-0.5">
               {workout.reps}
               <span className="text-sm text-gray-400 ml-1">times</span>
@@ -94,8 +96,8 @@ const WorkoutDetails = ({ workout ,onEdit }) => {
         </div>
         <span className="font-medium">
           {new Date(workout.createdAt).toLocaleString(undefined, {
-            dateStyle: 'medium',
-            timeStyle: 'short',
+            dateStyle: "medium",
+            timeStyle: "short",
             hour12: true,
           })}
         </span>

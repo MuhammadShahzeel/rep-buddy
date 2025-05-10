@@ -1,53 +1,37 @@
-
-import React, { useEffect,useState} from 'react';
-import { getWorkouts } from '../api/workoutApi';
-import WorkoutDetails from '../components/ui/WorkoutDetails';
-import WorkoutForm from '../components/ui/WorkoutForm';
-import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
-import UpdateWorkoutModal from '../components/ui/UpdateWorkoutModal';
-
-
-
-
-
+import React, { useEffect, useState } from "react";
+import { getWorkouts } from "../api/workoutApi";
+import WorkoutDetails from "../components/ui/WorkoutDetails";
+import WorkoutForm from "../components/ui/WorkoutForm";
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import UpdateWorkoutModal from "../components/ui/UpdateWorkoutModal";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
-const [selectedWorkout, setSelectedWorkout] = useState(null);
-const handleEdit = (workout) => {
-  setSelectedWorkout(workout);
-  setShowModal(true);
-};
+  const [selectedWorkout, setSelectedWorkout] = useState(null);
+  const handleEdit = (workout) => {
+    setSelectedWorkout(workout);
+    setShowModal(true);
+  };
 
-const closeModal = () => {
-  setShowModal(false);
-  setSelectedWorkout(null);
-};
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedWorkout(null);
+  };
   const { workouts, dispatch } = useWorkoutsContext();
- 
 
   useEffect(() => {
     const fetchWorkouts = async () => {
       try {
         const response = await getWorkouts();
         if (response.status === 200) {
-          
-          
-          
-          dispatch({ type: 'SET_WORKOUTS', payload: response.data });
-      
-          
-
+          dispatch({ type: "SET_WORKOUTS", payload: response.data });
         }
-       
-        
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchWorkouts();
-
   }, [dispatch]);
 
   return (
@@ -58,26 +42,33 @@ const closeModal = () => {
         <div className="space-y-6">
           {workouts && workouts.length > 0 ? (
             workouts.map((workout) => (
-              <WorkoutDetails key={workout._id} workout={workout}  onEdit={handleEdit} />
+              <WorkoutDetails
+                key={workout._id}
+                workout={workout}
+                onEdit={handleEdit}
+              />
             ))
           ) : (
-            <p className="text-gray-400 text-center py-8">No workouts found. Add your first workout!</p>
+            <p className="text-gray-400 text-center py-8">
+              No workouts found. Add your first workout!
+            </p>
           )}
         </div>
-  
+
         {/* Form Column */}
         <div className="lg:sticky lg:top-24 self-start">
-          <WorkoutForm/>
+          <WorkoutForm />
         </div>
       </div>
-  {selectedWorkout && (
-  <UpdateWorkoutModal
-    isOpen={showModal}
-    onClose={closeModal}
-    workout={selectedWorkout}
-  />)}
-
+      {selectedWorkout && (
+        <UpdateWorkoutModal
+          isOpen={showModal}
+          onClose={closeModal}
+          workout={selectedWorkout}
+        />
+      )}
     </div>
-  );}
+  );
+};
 
 export default Home;
