@@ -24,7 +24,7 @@ userSchema.statics.signup = async function (email, password) {
   }
   if (!validator.isStrongPassword(password)) {
     throw Error(
-      "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+      "Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character",
     );
   }
 
@@ -56,7 +56,7 @@ userSchema.statics.login = async function (email, password) {
     throw Error("Incorrect password");
   }
   return user;
-}
+};
 
 const User = mongoose.model("User", userSchema);
 export default User;
