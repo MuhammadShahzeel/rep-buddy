@@ -10,10 +10,21 @@ const Navbar = () => {
             <span className="text-emerald-400">Buddy</span>
           </h1>
         </Link>
-        <div className="flex items-center space-x-4">
-          <button className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg shadow-lg hover:shadow-emerald-400/20 transition-all font-medium">
+
+        <div className="flex items-center space-x-3">
+          <Link
+            to="/login"
+            className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-emerald-400/20 transition-all font-medium"
+          >
             Login
-          </button>
+          </Link>
+       <Link
+  to="/signup"
+  className="text-emerald-400 border border-emerald-500 px-4 py-2 rounded-lg hover:bg-emerald-500/10 transition-all font-medium"
+>
+  Signup
+</Link>
+
         </div>
       </nav>
     </header>
