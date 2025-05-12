@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { useLogout } from "../../hooks/useLogout";
 
 const Navbar = () => {
+  const { logout } = useLogout();
+  const handleLogout = () => {
+    logout();
+   
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-lg border-b border-gray-800 shadow-lg">
       <nav className="mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
@@ -18,13 +25,19 @@ const Navbar = () => {
           >
             Login
           </Link>
-       <Link
-  to="/signup"
-  className="text-emerald-400 border border-emerald-500 px-4 py-2 rounded-lg hover:bg-emerald-500/10 transition-all font-medium"
->
-  Signup
-</Link>
-
+          <Link
+            to="/signup"
+            className="text-emerald-400 border border-emerald-500 px-4 py-2 rounded-lg hover:bg-emerald-500/10 transition-all font-medium"
+          >
+            Signup
+          </Link>
+          
+          <button
+            onClick={handleLogout}
+            className="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-red-400/20 transition-all font-medium"
+          >
+            Logout
+          </button>
         </div>
       </nav>
     </header>
