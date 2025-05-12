@@ -19,10 +19,8 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(formData.email, formData.password);
-    // Don't reset form if signup fails
-    if (!error) {
-      setFormData({ email: "", password: "" });
-    }
+    
+ 
   };
 
   return (
