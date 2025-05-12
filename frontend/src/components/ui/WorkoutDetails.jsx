@@ -17,7 +17,7 @@ const WorkoutDetails = ({ workout, onEdit }) => {
     }
   };
 
-  // eslint-disable-next-line no-unused-vars
+ 
   const handleEdit = () => {
     onEdit(workout);
   };

@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useLogout } from "../../hooks/useLogout";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const Navbar = () => {
   const { logout } = useLogout();
+  const { user } = useAuthContext();
   const handleLogout = () => {
     logout();
   };
@@ -18,25 +20,36 @@ const Navbar = () => {
         </Link>
 
         <div className="flex items-center space-x-3">
-          <Link
-            to="/login"
-            className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-emerald-400/20 transition-all font-medium"
-          >
-            Login
-          </Link>
-          <Link
-            to="/signup"
-            className="text-emerald-400 border border-emerald-500 px-4 py-2 rounded-lg hover:bg-emerald-500/10 transition-all font-medium"
-          >
-            Signup
-          </Link>
+          {!user && (
+            <>
+              <Link
+                to="/login"
+                className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-emerald-400/20 transition-all font-medium"
+              >
+                Login
+              </Link>
+              <Link
+                to="/signup"
+                className="p-2 rounded-xl border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-500/40 transition-all duration-200 hover:scale-105 shadow-md hover:shadow-emerald-500/10 text-emerald-400 font-medium"
+              >
+                Signup
+              </Link>
+            </>
+          )}
 
-          <button
-            onClick={handleLogout}
-            className="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-red-400/20 transition-all font-medium"
-          >
-            Logout
-          </button>
+          {user && (
+            <>
+              <span className="text-sm text-gray-300 font-medium px-2">
+                {user.email}
+              </span>
+              <button
+                onClick={handleLogout}
+                className="p-2 rounded-xl border border-red-500/20 bg-red-500/5 hover:bg-red-500/10 hover:border-red-500/40 transition-all duration-200 hover:scale-105 shadow-md hover:shadow-red-500/10 text-red-500 font-medium"
+              >
+                Logout
+              </button>
+            </>
+          )}
         </div>
       </nav>
     </header>

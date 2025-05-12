@@ -6,8 +6,10 @@ import {
   deleteWorkout,
   updateWorkout,
 } from "../controllers/workout.controller.js";
+import { requireAuth } from "../middlewares/requireAuth.js";
 
 const router = express.Router();
+router.use(requireAuth)
 
 // GET /workouts
 router.get("/", getWorkouts);
