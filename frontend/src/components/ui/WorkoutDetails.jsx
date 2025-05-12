@@ -17,7 +17,6 @@ const WorkoutDetails = ({ workout, onEdit }) => {
     }
   };
 
- 
   const handleEdit = () => {
     onEdit(workout);
   };

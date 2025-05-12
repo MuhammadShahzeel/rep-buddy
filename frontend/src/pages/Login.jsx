@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
 
-
-
 const Login = () => {
-
-
   const { login, isLoading, error } = useLogin();
   const [formData, setFormData] = useState({
     email: "",

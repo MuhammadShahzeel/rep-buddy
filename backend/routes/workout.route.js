@@ -9,7 +9,7 @@ import {
 import { requireAuth } from "../middlewares/requireAuth.js";
 
 const router = express.Router();
-router.use(requireAuth)
+router.use(requireAuth);
 
 // GET /workouts
 router.get("/", getWorkouts);
