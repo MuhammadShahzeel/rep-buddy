@@ -5,7 +5,6 @@ const Navbar = () => {
   const { logout } = useLogout();
   const handleLogout = () => {
     logout();
-   
   };
 
   return (
@@ -31,7 +30,7 @@ const Navbar = () => {
           >
             Signup
           </Link>
-          
+
           <button
             onClick={handleLogout}
             className="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-red-400/20 transition-all font-medium"

@@ -13,11 +13,8 @@ const AppLayout = () => {
       </main>
 
       <footer className="mt-auto py-6 bg-gray-900/90 backdrop-blur-lg border-t border-gray-800">
-      
-      <Footer/>
-      
+        <Footer />
       </footer>
-    
     </div>
   );
 };

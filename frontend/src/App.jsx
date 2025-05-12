@@ -10,10 +10,10 @@ const App = () => {
     {
       path: "/",
       element: <AppLayout />,
-      children: [{ path: "/", element: <Home /> },
-             { path: 'login', element: <Login/> },
-        { path: 'signup', element: <Signup/> }
-
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "login", element: <Login /> },
+        { path: "signup", element: <Signup /> },
       ],
     },
   ]);

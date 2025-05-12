@@ -16,13 +16,11 @@ const Login = () => {
     }));
   };
 
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     await login(formData.email, formData.password);
     // Don't reset form if signup fails
-  
   };
-
 
   return (
     <form
@@ -55,13 +53,13 @@ const Login = () => {
         </div>
 
         <button
-        disabled={isLoading}
+          disabled={isLoading}
           type="submit"
           className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 rounded-xl shadow-lg hover:shadow-emerald-400/20 transition-all"
         >
           Log In
         </button>
-        
+
         {/* ✅ Error shown with consistent spacing & styling */}
         {error && (
           <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-2 rounded-lg">

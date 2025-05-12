@@ -19,8 +19,6 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(formData.email, formData.password);
-    
- 
   };
 
   return (
@@ -72,4 +70,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;      
+export default Signup;
