@@ -22,7 +22,7 @@ const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext();
 
   useEffect(() => {
-     console.log("User from AuthContext:", user)
+   
     const fetchWorkouts = async () => {
       try {
         const response = await getWorkouts(user.token);
@@ -34,7 +34,7 @@ const Home = () => {
       }
     };
      if (user) {
-      console.log("User is logged in:", user);
+     
       
       fetchWorkouts();
       

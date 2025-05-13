@@ -8,7 +8,7 @@ const api = axios.create({
 // Helper to add Authorization header
 const authHeader = (token) => ({
   headers: {
-    Authorization: `Bearer ${token}`,
+    authorization: `Bearer ${token}`,
   },
 });
 
