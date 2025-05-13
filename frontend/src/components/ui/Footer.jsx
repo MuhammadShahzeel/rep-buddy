@@ -1,7 +1,8 @@
-import React from "react";
+
 
 const Footer = () => {
   return (
+    
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-4">
       <p className="text-xs text-gray-500 hover:text-gray-400 transition-colors">
         © {new Date().getFullYear()}{" "}

@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
 import { useLogout } from "../../hooks/useLogout";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { FiLogIn, FiLogOut, FiUserPlus } from "react-icons/fi";
 
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
+
   const handleLogout = () => {
     logout();
   };
+
+  const baseButtonClasses =
+    "flex items-center gap-2 px-4 py-2 rounded-lg shadow-md transition-all font-medium";
 
   return (
     <header className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-lg border-b border-gray-800 shadow-lg">
@@ -24,14 +29,16 @@ const Navbar = () => {
             <>
               <Link
                 to="/login"
-                className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-emerald-400/20 transition-all font-medium"
+                className={`${baseButtonClasses} bg-emerald-600 hover:bg-emerald-500 text-white hover:shadow-emerald-400/20`}
               >
+                <FiLogIn />
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="p-2 rounded-xl border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-500/40 transition-all duration-200 hover:scale-105 shadow-md hover:shadow-emerald-500/10 text-emerald-400 font-medium"
+                className={`${baseButtonClasses} border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-500/40 text-emerald-400 hover:shadow-emerald-500/10`}
               >
+                <FiUserPlus />
                 Signup
               </Link>
             </>
@@ -44,8 +51,9 @@ const Navbar = () => {
               </span>
               <button
                 onClick={handleLogout}
-                className="p-2 rounded-xl border border-red-500/20 bg-red-500/5 hover:bg-red-500/10 hover:border-red-500/40 transition-all duration-200 hover:scale-105 shadow-md hover:shadow-red-500/10 text-red-500 font-medium"
+                className={`${baseButtonClasses} border border-red-500/20 bg-red-500/5 hover:bg-red-500/10 hover:border-red-500/40 text-red-500 hover:shadow-red-500/10`}
               >
+                <FiLogOut />
                 Logout
               </button>
             </>
