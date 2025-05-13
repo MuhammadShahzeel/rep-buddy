@@ -2,18 +2,33 @@ import React from "react";
 import { Dumbbell, Repeat, Calendar, Trash2, Pencil } from "lucide-react";
 import { useWorkoutsContext } from "../../hooks/useWorkoutsContext";
 import { deleteWorkout } from "../../api/workoutApi";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import {useState} from "react";
 
 const WorkoutDetails = ({ workout, onEdit }) => {
+  const { user } = useAuthContext();
   const { dispatch } = useWorkoutsContext();
+    const [error, setError] = useState(null);
 
   const handleDelete = async (id) => {
+    if (!user) {
+      setError("You must be logged in to delete a workout.");
+      
+      return;
+    }
     try {
-      const response = await deleteWorkout(id);
-      if (response.status === 200) {
+      const response = await deleteWorkout(id, user.token);
+
+      if (response.status !== 200) {
+        setError(response.data.error);
+      } 
+      else {
         dispatch({ type: "DELETE_WORKOUT", payload: id });
+        setError(null);
       }
     } catch (error) {
       console.error("Error deleting workout:", error);
+      setError("Failed to delete workout. Please try again.");
     }
   };
 
@@ -100,7 +115,14 @@ const WorkoutDetails = ({ workout, onEdit }) => {
             hour12: true,
           })}
         </span>
+
       </div>
+      {/* Error Message */}
+      {error && (
+        <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-2 rounded-lg mt-4">
+          {error}
+        </div>
+      )}
     </div>
   );
 };

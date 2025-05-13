@@ -4,8 +4,10 @@ import WorkoutDetails from "../components/ui/WorkoutDetails";
 import WorkoutForm from "../components/ui/WorkoutForm";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import UpdateWorkoutModal from "../components/ui/UpdateWorkoutModal";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Home = () => {
+  const { user } = useAuthContext();
   const [showModal, setShowModal] = useState(false);
   const [selectedWorkout, setSelectedWorkout] = useState(null);
   const handleEdit = (workout) => {
@@ -20,9 +22,10 @@ const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext();
 
   useEffect(() => {
+     console.log("User from AuthContext:", user)
     const fetchWorkouts = async () => {
       try {
-        const response = await getWorkouts();
+        const response = await getWorkouts(user.token);
         if (response.status === 200) {
           dispatch({ type: "SET_WORKOUTS", payload: response.data });
         }
@@ -30,9 +33,16 @@ const Home = () => {
         console.error(error);
       }
     };
+     if (user) {
+      console.log("User is logged in:", user);
+      
+      fetchWorkouts();
+      
+     }
 
-    fetchWorkouts();
-  }, [dispatch]);
+
+  
+  }, [dispatch,user]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  min-h-screen">
