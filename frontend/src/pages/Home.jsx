@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getWorkouts } from "../api/workoutApi";
 import WorkoutDetails from "../components/ui/WorkoutDetails";
 import WorkoutForm from "../components/ui/WorkoutForm";
@@ -22,7 +22,6 @@ const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext();
 
   useEffect(() => {
-   
     const fetchWorkouts = async () => {
       try {
         const response = await getWorkouts(user.token);
@@ -33,23 +32,20 @@ const Home = () => {
         console.error(error);
       }
     };
-     if (user) {
-     
-      
+
+    if (user) {
       fetchWorkouts();
-      
-     }
-
-
-  
-  }, [dispatch,user]);
+    }
+  }, [dispatch, user]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8  min-h-screen">
-      <h2 className="text-3xl font-bold text-white mb-4">Your Workouts</h2>
-      <div className="grid md:grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8">
-        {/* Workouts Column */}
-        <div className="space-y-6">
+    <div className="w-full min-h-screen">
+      <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Your Workouts</h2>
+      
+      {/* Responsive grid - stack on mobile, side-by-side on larger screens */}
+      <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 sm:gap-8">
+        {/* Workouts Column - Always first, regardless of screen size */}
+        <div className="space-y-4 sm:space-y-6">
           {workouts && workouts.length > 0 ? (
             workouts.map((workout) => (
               <WorkoutDetails
@@ -59,17 +55,18 @@ const Home = () => {
               />
             ))
           ) : (
-            <p className="text-gray-400 text-center py-8">
+            <p className="text-gray-400 text-center py-6 sm:py-8">
               No workouts found. Add your first workout!
             </p>
           )}
         </div>
 
-        {/* Form Column */}
-        <div className="lg:sticky lg:top-24 self-start">
+        {/* Form Column - Always after workouts */}
+        <div className="lg:sticky lg:top-24 self-start mb-6 lg:mb-0">
           <WorkoutForm />
         </div>
       </div>
+      
       {selectedWorkout && (
         <UpdateWorkoutModal
           isOpen={showModal}
