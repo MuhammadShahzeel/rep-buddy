@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Dumbbell, Repeat, Calendar, Trash2, Pencil } from "lucide-react";
 import { useWorkoutsContext } from "../../hooks/useWorkoutsContext";
 import { deleteWorkout } from "../../api/workoutApi";

@@ -5,11 +5,14 @@ import WorkoutForm from "../components/ui/WorkoutForm";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import UpdateWorkoutModal from "../components/ui/UpdateWorkoutModal";
 import { useAuthContext } from "../hooks/useAuthContext";
+import WorkoutSkeleton from "../components/ui/WorkoutSkeleton";
 
 const Home = () => {
   const { user } = useAuthContext();
   const [showModal, setShowModal] = useState(false);
   const [selectedWorkout, setSelectedWorkout] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const handleEdit = (workout) => {
     setSelectedWorkout(workout);
     setShowModal(true);
@@ -31,6 +34,9 @@ const Home = () => {
       } catch (error) {
         console.error(error);
       }
+      finally {
+      setLoading(false); // Hide skeletons after loading is done
+    }
     };
 
     if (user) {
@@ -46,19 +52,27 @@ const Home = () => {
       <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 sm:gap-8">
         {/* Workouts Column - Always first, regardless of screen size */}
         <div className="space-y-4 sm:space-y-6">
-          {workouts && workouts.length > 0 ? (
-            workouts.map((workout) => (
-              <WorkoutDetails
-                key={workout._id}
-                workout={workout}
-                onEdit={handleEdit}
-              />
-            ))
-          ) : (
-            <p className="text-gray-400 text-center py-6 sm:py-8">
-              No workouts found. Add your first workout!
-            </p>
-          )}
+      {loading ? (
+  // Show 3 skeletons while loading
+  <>
+    <WorkoutSkeleton/>
+    <WorkoutSkeleton />
+   
+  </>
+) : workouts && workouts.length > 0 ? (
+  workouts.map((workout) => (
+    <WorkoutDetails
+      key={workout._id}
+      workout={workout}
+      onEdit={handleEdit}
+    />
+  ))
+) : (
+  <p className="text-gray-400 text-center py-6 sm:py-8">
+    No workouts found. Add your first workout!
+  </p>
+)}
+
         </div>
 
         {/* Form Column - Always after workouts */}
