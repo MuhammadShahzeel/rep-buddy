@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Save, X } from "lucide-react";
 import { updateWorkout } from "../../api/workoutApi";
 import { useWorkoutsContext } from "../../hooks/useWorkoutsContext"; // assuming you have this custom hook
-
+import { useAuthContext } from "../../hooks/useAuthContext"; // assuming you have this custom hook
 function UpdateWorkoutModal({ isOpen, onClose, workout }) {
+  const { user } = useAuthContext();
   const { dispatch } = useWorkoutsContext();
   const [updatedWorkout, setUpdatedWorkout] = useState(workout);
 
@@ -16,8 +17,12 @@ function UpdateWorkoutModal({ isOpen, onClose, workout }) {
   };
 
   const handleSubmit = async () => {
+    if (!user) {
+      console.error("You must be logged in to update a workout.");
+      return;
+    }
     try {
-      const response = await updateWorkout(workout._id, updatedWorkout);
+      const response = await updateWorkout(workout._id, updatedWorkout, user.token);
       if (response.status === 200) {
         dispatch({ type: "UPDATE_WORKOUT", payload: response.data });
         onClose();

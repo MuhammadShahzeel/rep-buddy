@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { getWorkouts } from "../api/workoutApi";
 import WorkoutDetails from "../components/ui/WorkoutDetails";
 import WorkoutForm from "../components/ui/WorkoutForm";
