@@ -8,7 +8,7 @@ export const requireAuth = async (req, res, next) => {
   }
 
   const token = authorization.split(" ")[1];
-  console.log("✅ Token received on backend:", token); // ✅ LOG THIS
+
   try {
     const { _id } = jwt.verify(token, process.env.JWT_SECRET);
     req.user = await UserModel.findById(_id).select("_id");
