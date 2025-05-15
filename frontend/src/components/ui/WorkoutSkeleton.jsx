@@ -1,7 +1,6 @@
 const WorkoutSkeleton = () => {
   return (
     <div className="relative bg-gray-900/80 backdrop-blur-lg border border-gray-800 rounded-2xl p-4 sm:p-6 shadow-2xl animate-pulse space-y-6">
-      
       {/* Header skeleton */}
       <div className="flex justify-between items-start">
         <div>

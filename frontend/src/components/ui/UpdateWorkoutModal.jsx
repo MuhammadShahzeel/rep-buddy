@@ -23,7 +23,11 @@ function UpdateWorkoutModal({ isOpen, onClose, workout }) {
       return;
     }
     try {
-      const response = await updateWorkout(workout._id, updatedWorkout, user.token);
+      const response = await updateWorkout(
+        workout._id,
+        updatedWorkout,
+        user.token,
+      );
       if (response.status === 200) {
         dispatch({ type: "UPDATE_WORKOUT", payload: response.data });
         onClose();

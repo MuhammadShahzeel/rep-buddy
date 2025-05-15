@@ -1,8 +1,4 @@
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import AppLayout from "./components/layout/AppLayout";
 import Home from "./pages/Home";
@@ -10,7 +6,6 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import RequireAuth from "./components/auth/RequireAuth";
 import RedirectIfLoggedIn from "./components/auth/RedirectIfLoggedIn";
-
 
 const router = createBrowserRouter([
   {

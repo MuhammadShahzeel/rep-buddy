@@ -24,14 +24,14 @@ function WorkoutForm() {
       setError("You must be logged in to add a workout.");
       return;
     }
-    
+
     try {
       const response = await addWorkout(workoutData, user.token);
       if (response.status !== 200) {
         setError(response.data.error);
       } else {
         dispatch({ type: "ADD_WORKOUT", payload: response.data });
-        
+
         setError(null);
         setWorkoutData({ title: "", load: "", reps: "" });
       }

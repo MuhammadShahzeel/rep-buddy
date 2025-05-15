@@ -5,9 +5,9 @@ import mongoose from "mongoose";
 const getWorkouts = async (req, res) => {
   const user_id = req.user._id;
   try {
-    
-    
-    const workouts = await WorkoutModel.find({user_id}).sort({ createdAt: -1 });
+    const workouts = await WorkoutModel.find({ user_id }).sort({
+      createdAt: -1,
+    });
     if (!workouts) {
       return res.status(404).json({ error: "No workouts found" });
     }

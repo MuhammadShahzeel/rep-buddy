@@ -16,7 +16,7 @@ const Navbar = () => {
     const handleClickOutside = (event) => {
       if (
         isOpen &&
-        menuRef.current && 
+        menuRef.current &&
         !menuRef.current.contains(event.target) &&
         buttonRef.current &&
         !buttonRef.current.contains(event.target)
@@ -52,7 +52,7 @@ const Navbar = () => {
 
   const baseButtonClasses =
     "flex items-center gap-2 px-4 py-2 rounded-lg shadow-md transition-all font-medium";
-    
+
   return (
     <header className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-lg border-b border-gray-800 shadow-lg">
       <nav className="mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">

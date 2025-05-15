@@ -7,13 +7,9 @@ const Footer = () => {
         {/* Copyright Section */}
         <p className="text-xs sm:text-sm text-gray-300 flex justify-center sm:justify-start sm:mr-6">
           © {new Date().getFullYear()}{" "}
-          <span className="text-white font-semibold ml-1">
-            Rep
-          </span>
-          <span className="text-emerald-400 font-semibold ml-1">
-            Buddy
-          </span>
-          . All rights reserved.
+          <span className="text-white font-semibold ml-1">Rep</span>
+          <span className="text-emerald-400 font-semibold ml-1">Buddy</span>.
+          All rights reserved.
         </p>
 
         {/* GitHub Link with Icon */}

@@ -5,7 +5,6 @@ export const useLogout = () => {
   const { dispatch } = useAuthContext();
   const { dispatch: workoutsDispatch } = useWorkoutsContext();
 
-
   const logout = () => {
     // Remove user from storage
     localStorage.removeItem("user");

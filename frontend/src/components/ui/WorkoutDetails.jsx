@@ -1,9 +1,8 @@
-
 import { Dumbbell, Repeat, Calendar, Trash2, Pencil } from "lucide-react";
 import { useWorkoutsContext } from "../../hooks/useWorkoutsContext";
 import { deleteWorkout } from "../../api/workoutApi";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import {useState} from "react";
+import { useState } from "react";
 
 const WorkoutDetails = ({ workout, onEdit }) => {
   const { user } = useAuthContext();
@@ -20,8 +19,7 @@ const WorkoutDetails = ({ workout, onEdit }) => {
 
       if (response.status !== 200) {
         setError(response.data.error);
-      } 
-      else {
+      } else {
         dispatch({ type: "DELETE_WORKOUT", payload: id });
         setError(null);
       }
@@ -53,14 +51,24 @@ const WorkoutDetails = ({ workout, onEdit }) => {
             className="p-1.5 sm:p-2 rounded-xl border border-emerald-500/20 bg-emerald-500/5 hover:bg-emerald-500/10 hover:border-emerald-500/40 transition-all duration-200 hover:scale-105 shadow-md hover:shadow-emerald-500/10"
             title="Edit Workout"
           >
-            <Pencil className="text-emerald-400" size={18} sm:size={20} strokeWidth={2.2} />
+            <Pencil
+              className="text-emerald-400"
+              size={18}
+              sm:size={20}
+              strokeWidth={2.2}
+            />
           </button>
           <button
             onClick={() => handleDelete(workout._id)}
             className="p-1.5 sm:p-2 rounded-xl border border-red-500/20 bg-red-500/5 hover:bg-red-500/10 hover:border-red-500/40 transition-all duration-200 hover:scale-105 shadow-md hover:shadow-red-500/10"
             title="Delete Workout"
           >
-            <Trash2 className="text-red-500" size={18} sm:size={20} strokeWidth={2.2} />
+            <Trash2
+              className="text-red-500"
+              size={18}
+              sm:size={20}
+              strokeWidth={2.2}
+            />
           </button>
         </div>
       </div>
@@ -105,7 +113,12 @@ const WorkoutDetails = ({ workout, onEdit }) => {
       {/* Date */}
       <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-400/90">
         <div className="p-1.5 bg-gray-800/50 rounded-lg border border-gray-700/50">
-          <Calendar className="text-cyan-400" size={14} sm:size={16} strokeWidth={2} />
+          <Calendar
+            className="text-cyan-400"
+            size={14}
+            sm:size={16}
+            strokeWidth={2}
+          />
         </div>
         <span className="font-medium">
           {new Date(workout.createdAt).toLocaleString(undefined, {
@@ -115,7 +128,7 @@ const WorkoutDetails = ({ workout, onEdit }) => {
           })}
         </span>
       </div>
-      
+
       {/* Error Message */}
       {error && (
         <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-3 sm:px-4 py-2 rounded-lg mt-4">
