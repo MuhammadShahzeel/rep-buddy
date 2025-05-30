@@ -11,7 +11,7 @@
 ## 📌 Features
 
 - User authentication (Login/Signup)
-- Create, Read, Update, Delete (CRUD) workouts
+- Create, Read, Update, Delete (CRUD workouts
 - Track reps, sets, and exercise types
 - Responsive UI using Tailwind CSS
 - Backend API built with Express and MongoDB
