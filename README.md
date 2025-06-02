@@ -31,7 +31,7 @@
 - Express.js
 - MongoDB with Mongoose
 - JWT for Authentication
-- dotenv for confi
+- dotenv for config
 
 ---
 
