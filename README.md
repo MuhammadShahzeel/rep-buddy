@@ -22,7 +22,7 @@
 
 ### Frontend:
 - React.js
-- Tailwind CSS
+- TailwindCSS
 - Axios
 - React Router
 
