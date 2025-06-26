@@ -15,7 +15,7 @@ const Footer = () => {
         {/* GitHub Link with Icon */}
         <div className="flex items-center mt-2 sm:mt-0">
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/MuhammadShahzeel/rep-buddy"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-white font-medium hover:text-emerald-400"
