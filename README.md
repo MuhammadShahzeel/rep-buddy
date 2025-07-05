@@ -4,7 +4,7 @@
 
 ## 🌐 Live Demo
 
-👉 [Visit Live App](https://rep-buddy-orpin.vercel.app)
+👉 [Visit Live App](https://rep-buddy-nine.vercel.app/)
 
 ---
 
