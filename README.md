@@ -1,6 +1,6 @@
 # 🏋️‍♂️ Rep Buddy
 
-**Rep Buddy** is a practice project built using the **MERN stack**. It helps users manage their workout routines, track sets and reps, and monitor progress — ideal for learning full-stack development.
+**Rep Buddy** is a practice project built using the **MERN stack**. It helps users manage their workout routines, track sets and reps, and monitor progress — ideal for learning full-stack development
 
 ## 🌐 Live Demo
 
